@@ -1,6 +1,6 @@
 var 
-	helloworld = require('./src/helloworld');
+	App = require('./src/app');
 
 
 var
-	h = new helloworld();
+	app = new App();
