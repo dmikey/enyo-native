@@ -13,7 +13,7 @@ module.exports = kind({
 	components: [
 		{kind: Window, width: 640, height: 480,  components:[
 			{kind: Label, left:20, top:20, content: 'Hello World From Enyo!'},
-			{kind: Image, left:20, top:35, src: 'resources/qimage.png'},
+			{kind: Image, left:20, top:35, src: 'resources/beanbird.png'},
 			{name: 'sound', kind: Sound, autoPlay: true, src: 'resources/answer.wav'},
 		]}
 	]
