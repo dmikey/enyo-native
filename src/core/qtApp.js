@@ -21,7 +21,7 @@ module.exports = kind({
 		this.inherited(arguments);
 		setInterval(function() {
 		  this.app.processEvents();
-		}.bind(this), 0);
+		}.bind(this), 100);
 	},
 	adjustComponentProps: kind.inherit(function (sup) {
 		return function (props) {
