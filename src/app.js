@@ -1,7 +1,6 @@
 var
     kind = require('enyo/kind');
-var
-	Component
+
 var
     Application = require('./core/qtApp'),
     Window = require('./core/qtWindow'),
