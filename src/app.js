@@ -4,8 +4,8 @@ var
 var
 	Application = require('./core/qtApp'),
 	Window = require('./core/qtWindow'),
-	Label = require('./ui/qtLabel');
-	Image = require('./ui/qtImage');
+	Label = require('./ui/qtLabel'),
+	Image = require('./ui/qtImage'),
 	Sound = require('./ui/qtSound');
 
 module.exports = kind({
