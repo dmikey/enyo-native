@@ -20,7 +20,7 @@ module.exports = kind({
 			this.sound = new this.window.app.qt.QSound(this.src);
 			//set the sound loops, default is 1
 			this.sound.setLoops(this.loops);
-			if(this.autoPlay) {
+			if(this.autoplay) {
 				//if this should autoplay play sound
 				this.sound.play();
 			}

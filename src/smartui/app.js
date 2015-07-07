@@ -1,17 +1,18 @@
+/*
+	a hybrid application kind.
+	uses platform to determine which 'rasterizer' it should use when creating components.
+	each smart component then determines how to represent itself in environment
+*/
 var
     kind = require('enyo/kind'),
     platform = require('enyo/platform'),
     utils = require('enyo/utils');
 
 var
-    Component = require('enyo/Component');
-
-var
     app;
 
 var
     def = {
-        kind: Component,
         constructor: kind.inherit(function(sup) {
             return function() {
                 sup.apply(this, arguments);
