@@ -13,12 +13,28 @@ module.exports = kind({
 	height: 0,
 	create: kind.inherit(function (sup) {
 		return function () {
+			//the widget will have it's own draw queue
 			this.queue = [];
 			
+			//process the create
 			sup.apply(this, arguments);
 			
+			//create a new widget that belongs to the current window
 			this.widget = new this.window.app.qt.QWidget(this.window.window);
 			
+			//set the dimensions of the widget
+			this.widget.resize(this.width, this.height);
+			
+			//set the position of the widget
+			this.widget.move(this.left, this.top);
+			
+			//set up events if we need them
+			this.widget.mousePressEvent(function(e) {
+			  this.triggerHandler('ontap');
+			  this.widget.update();
+			}.bind(this));
+			
+			//setup the widget paint event
 			this.widget.paintEvent(this.paintEvent.bind(this));
 		};
 	}),
