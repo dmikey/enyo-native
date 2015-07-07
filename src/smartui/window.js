@@ -8,18 +8,7 @@ var
 var def = {
 	kind: Component,
 	width: 0,
-	height: 0,
-	create: kind.inherit(function (sup) {
-		return function (props) {
-			sup.apply(this, arguments);
-		};
-	}),
-	adjustComponentProps: kind.inherit(function (sup) {
-		return function (props) {
-			props.window = this;
-			sup.apply(this, arguments);
-		};
-	})
+	height: 0
 };
 
 if (platform.platformName == 'node') {

@@ -10,5 +10,8 @@
   "license": "ISC",
   "devDependencies": {
     "node-qt": "0.0.2"
-  }
+  },
+  "assets": [
+    "resources"
+  ]
 }

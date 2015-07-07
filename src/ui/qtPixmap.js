@@ -15,6 +15,7 @@ module.exports = kind({
 		return function () {
 			sup.apply(this, arguments);
 			
+			console.log(this.window.app);
 			//create a new pixmap
 			this.pixmap = new this.window.app.qt.QPixmap(this.width, this.height);
 			
