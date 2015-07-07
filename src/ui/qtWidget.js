@@ -5,28 +5,21 @@ var
 	Component = require('enyo/Component');
 
 module.exports = kind({
+	name: 'enyo.qtWidget',
 	kind: Component,
+	left: 0,
+	top: 0,
 	width: 0,
 	height: 0,
 	create: kind.inherit(function (sup) {
-		return function (props) {
-			//init a new queue for this window to paint 
-			//its components from
+		return function () {
 			this.queue = [];
 			
-			//create a window for which ever app process owns this
-			this.window = new this.app.qt.QWidget;
-			
 			sup.apply(this, arguments);
-		
-			//set the dimensions of the window
-			this.window.resize(this.width, this.height);
-				
-			//this is the windows paint event
-			this.window.paintEvent(this.paintEvent.bind(this));
 			
-			//show the window
-			this.window.show();	
+			this.widget = new this.window.app.qt.QWidget(this.window.window);
+			
+			this.widget.paintEvent(this.paintEvent.bind(this));
 		};
 	}),
 	paintEvent: function(){
@@ -35,7 +28,7 @@ module.exports = kind({
 		var p = new this.app.qt.QPainter();
 
 		//begin the paint
-		p.begin(this.window);
+		p.begin(this.widget);
 
 		//iterate over the paint queue from child components
 		for (var i = 0; i < this.get('queue').length; i++) { 
@@ -47,7 +40,10 @@ module.exports = kind({
 	},
 	adjustComponentProps: kind.inherit(function (sup) {
 		return function (props) {
+			//pass qt down to children, seems to be a continuing theme
+			//might just want to create a base kind
 			props.window = this;
+			props.qt = this.window.app.qt;
 			sup.apply(this, arguments);
 		};
 	})

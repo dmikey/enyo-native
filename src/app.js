@@ -8,6 +8,7 @@ var
 	Pixmap = require('./smartui/pixmap'),
 	Fill = require('./smartui/colorfill'),
 	Sound = require('./smartui/sound'),
+	WidgetButton = require('./ui/qtWidgetButton'),
 	Window = require('./smartui/window');
 
 var pixmap = kind({kind: Pixmap, height: 150, width: 150, components:[
@@ -21,7 +22,10 @@ module.exports = kind({
 			{kind: Label, content: 'Heyyyyyy', left: 10, top: 20},
 			{kind: Image, left: 20, top: 35, src: 'resources/beanbird.png'},
 			{kind: pixmap, left: 30, top: 50},
-			{kind: Sound, autoplay: true, src: 'resources/answer.wav'}
+			{kind: Sound, autoplay: true, src: 'resources/answer.wav'},
+			{kind: WidgetButton, components:[
+				{kind: Label, content: 'Howdy', left: 10, top: 20},
+			]},
 		]}
 	]
 });
