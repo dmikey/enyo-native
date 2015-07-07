@@ -5,6 +5,7 @@ var
 var
 	Component = require('enyo/Component');
 
+
 //use a native node module, and avoid enyo
 //path re-writes
 var qt = 'node-qt';
@@ -15,7 +16,7 @@ module.exports = kind({
 	constructor: function(){
 		this.inherited(arguments);
 		this.qt = require(qt);
-		this.app = new this.qt.QApplication();	
+		this.app = new this.qt.QApplication();
 	},
 	constructed: function() {
 		this.inherited(arguments);
