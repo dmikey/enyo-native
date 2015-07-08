@@ -9,20 +9,47 @@ Requirements
 
 Due to the experimental nature of this, the requirements below are pretty strict.
 
+
+** Description of my hackathon project
+-------------------------------------
+Using a distributable runtime of Qt 4.8, Node 10.35, and Enyo 2.6, I have added support for `write once, run everywhere`.
+The main showcase is not the painting app, but the underlying controls, and bindings to the Qt Framework, as well as the
+browser.
+
+
+** Team Member Names
+-------------------
+Derek Anderson
+
+
+** What environment does it need to run
+--------------------------------------
+The built file will work in Chrome (latest used for development), for native support, only OSX with Node 10.35, and Qt 4.8 was tested.
+
+
+
+** How to build my code
+-----------------------
+
 * Node v0.10.39
 * Enyo-Dev at commit (https://github.com/enyojs/enyo-dev/commit/3437da02a3dfb133ef89af5a4f987d6212f0f43d)
+* Clone this code
+* npm install
+* epack
 
-Supported
----------
 
-Supported but limited functionality currently
+** How to deploy or run my code
+------------------------------
 
-* qtImage
-* qtLabel (drawText)
-* qtPixmap
-* qtColor
-* qtSound
+* run output.js in browser with index.html in dist dir
+* run node output.js from the dist dir to see native output used
 
-![what it looks like](http://i.imgur.com/lGDwAoV.png)
+
+** Any links or URLs for reference
+---------------------------------
+
+* https://github.com/dmikey/enyo-native/tree/hybrid/
+
+
 
 

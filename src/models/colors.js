@@ -18,5 +18,20 @@ module.exports = {
 		hex: '#ff0000',
 		index: '7'
 	},
-	7: '#ff0000'
+	7: '#ff0000',
+	fucia: {
+		hex: '#ff00ff',
+		index: 11
+	},
+	11: '#ff00ff',
+	yellow : {
+		hex: '#ffff00',
+		index: 12
+	},
+	12: '#ffff00',
+	purple :  {
+		hex: '#800080',
+		index: 17
+	},
+	17: '#800080'
 }
