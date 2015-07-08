@@ -30,7 +30,7 @@ if (platform.platformName == 'node') {
     app = require('../core/qtApp');
     def.kind = app;
 } else {
-	def.kind = require('enyo/Control');
+    def.kind = require('enyo/Control');
 }
 
 var
