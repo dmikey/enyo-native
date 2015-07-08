@@ -42,7 +42,7 @@ module.exports = kind({
     },
     paintMouseEvent: function(event) {
         this.queue.push(function(p) {
-            p.fillRect(event.x(), event.y(), 10, 10, 9);
+            p.fillRect(event.x(), event.y(), 10, 10, event.paintColor);
         }.bind(this));
     }
 });

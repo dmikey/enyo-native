@@ -9,6 +9,10 @@ var
     Widget = require('../smartui/widget'),
     Window = require('../smartui/window');
 
+var
+    toolbar = require('../widgets/toolbar'),
+	colors = require('../models/colors');
+
 var paintArea = kind({
     kind: Pixmap,
     width: 640,
@@ -16,7 +20,7 @@ var paintArea = kind({
     components: [{
         name: 'fill',
         kind: PainterFill,
-        backgroundColor: 10,
+        backgroundColor: 3,
         backgroundWidth: 640,
         backgroundHeight: 480
     }]
@@ -25,9 +29,10 @@ var paintArea = kind({
 module.exports = kind({
     kind: Window,
     autoshow: false,
-    style: 'background: #eee;overflow:hidden',
+    style: 'background: #eee;overflow: hidden;border: solid 1px #ccc;',
     width: 640,
     height: 480,
+	paintColor: 8,
     components: [{
         kind: Widget,
         width: 640,
@@ -35,16 +40,29 @@ module.exports = kind({
         components: [{
             name: 'canvas',
             kind: paintArea,
-			
+
         }],
         onmousemove: 'handleMouseMove',
         onmousedown: 'handleMouseDown',
         onmouseup: 'handleMouseUp'
+    },{
+		name: 'toolbar',
+        kind: toolbar,
+		width: 640,
+		height: 50,
+		ontap: 'handleColor'
     }],
+	handleColor: function(sender, event) {
+		var x = event.clientX || event.x();
+		var colorkey  =  this.$.toolbar.getColorByX(x);
+		this.paintColor = Number(colors[colorkey].index);
+	},
     handleMouseUp: function(sender, event) {
         this.mousedown = false;
     },
     handleMouseMove: function(sender, event) {
+		
+		event.paintColor = this.paintColor;
 
         if (this.$ && this.$.canvas && this.$.canvas.paintMouseEvent) {
             if (platform.platformName != 'node') {
@@ -59,6 +77,8 @@ module.exports = kind({
         return true;
     },
     handleMouseDown: function(sender, event) {
+		
+		event.paintColor = this.paintColor;
         this.mousedown = true;
         if (this.$ && this.$.canvas && this.$.canvas.paintMouseEvent) {
             this.$.canvas.paintMouseEvent(event);

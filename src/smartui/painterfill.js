@@ -2,6 +2,8 @@ var
 	kind = require('enyo/kind'),
 	platform = require('enyo/platform');
 
+var
+	colorsm = require('../models/colors');
 
 //simple map for now against some of the colors we'll offer from qt
 var 
@@ -32,9 +34,10 @@ if (platform.platformName == 'node') {
 } else {
 	def.kind = require('enyo/Control');
 	def.paint = function(left, top, height, width, color){
+		
 		var d = document.createElement('div');
 		
-		d.style.background = '#ffffff';
+		d.style.background = colorsm[color];
 		d.style.height = '10px';
 		d.style.width = '10px';
 		d.style.top = top + 'px';
@@ -46,7 +49,7 @@ if (platform.platformName == 'node') {
 	};
 	def.paintMouseEvent = function(sender, event){
 		var event = event || sender;
-		this.paint(event.clientX, event.clientY);
+		this.paint(event.clientX, event.clientY, 10, 10, event.paintColor);
 	};
 }
 
