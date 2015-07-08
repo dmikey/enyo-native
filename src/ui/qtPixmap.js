@@ -39,9 +39,4 @@ module.exports = kind({
 			props.pixmap = this;
 		};
 	}),
-	paintMouseEvent: function(event) {
-		if(this.$.fill && this.$.fill.paintMouseEvent) {
-			this.$.fill.paintMouseEvent(event);	
-		}
-	}
 });

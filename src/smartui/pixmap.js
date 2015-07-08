@@ -14,7 +14,12 @@ var def = {
 		   }
 			
 		};
-	})
+	}),
+	paintMouseEvent: function(event) {
+		if(this.$.fill && this.$.fill.paintMouseEvent) {
+			this.$.fill.paintMouseEvent(event);	
+		}
+	}
 };
 
 if (platform.platformName == 'node') {

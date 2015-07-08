@@ -23,7 +23,7 @@ var def = {
 				this.setStyle('background-color:' + colors[this.backgroundColor] + ';left:' + this.backgroundLeft + 'px; top:' + this.backgroundTop + 'px;height:' + this.backgroundHeight + 'px; width:' + this.backgroundWidth + 'px;position:absolute;display:block;')
 			}
 		};
-	})
+	}),
 };
 
 if (platform.platformName == 'node') {
@@ -31,6 +31,23 @@ if (platform.platformName == 'node') {
     def.kind = require('../ui/qtPainter');
 } else {
 	def.kind = require('enyo/Control');
+	def.paint = function(left, top, height, width, color){
+		var d = document.createElement('div');
+		
+		d.style.background = '#ffffff';
+		d.style.height = '10px';
+		d.style.width = '10px';
+		d.style.top = top + 'px';
+		d.style.left = left + 'px';
+		d.style.position = "absolute";
+		d.style.display = "block";
+		
+		this.hasNode().appendChild(d);		
+	};
+	def.paintMouseEvent = function(sender, event){
+		var event = event || sender;
+		this.paint(event.clientX, event.clientY);
+	};
 }
 
 module.exports = kind(def);

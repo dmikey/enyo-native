@@ -25,8 +25,10 @@ module.exports = kind({
 			//this is the windows paint event
 			this.window.paintEvent(this.paintEvent.bind(this));
 			
-			//show the window
-			this.window.show();	
+			if(this.autoshow != false) {
+				//show the window
+				this.window.show();	
+			}
 		};
 	}),
 	paintEvent: function(){
@@ -50,5 +52,11 @@ module.exports = kind({
 			props.window = this;
 			sup.apply(this, arguments);
 		};
-	})
+	}),
+	close: function() {
+		this.window.close();	
+	},
+	show: function() {
+		this.window.show();	
+	}
 });

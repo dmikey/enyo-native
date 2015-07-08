@@ -18,6 +18,10 @@ var def = {
 			    var style = this.getStyle();
 			    style += 'left:' + this.left + 'px; top:' + this.top + 'px;height:' + this.height + 'px; width:' + this.width + 'px;position:absolute;display:block;';
 				this.setStyle(style)
+				
+				if(this.autoshow == false) {
+					this.hide();
+				}
 		   }
 		};
 	})
@@ -29,6 +33,12 @@ if (platform.platformName == 'node') {
 } else {
 	//render in browser using enyo dom
 	def.kind = require('enyo/Control');
+	def.close = function() {
+		this.hide();	
+	};
+	def.show = function() {
+		this.inherited(arguments);
+	}
 }
 
 module.exports = kind(def);

@@ -30,6 +30,7 @@ module.exports = kind({
 			
 			//set up events if we need them
 			this.widget.mousePressEvent(function(e) {
+	 		  this.dispatchEvent('onmousedown', e, this);
 	 		  this.dispatchEvent('ontap', e, this);
 			  this.widget.update();
 			}.bind(this));
