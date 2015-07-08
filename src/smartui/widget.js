@@ -10,7 +10,9 @@ var def = {
 			
 		   //impliment a simple pixmap fill
 		   if (platform.platformName != 'node') {
-				this.setStyle('left:' + this.left + 'px; top:' + this.top + 'px;height:' + this.height + 'px; width:' + this.width + 'px;position:absolute;display:block;')
+			   var style = this.getStyle();
+			    style += 'left:' + this.left + 'px; top:' + this.top + 'px;height:' + this.height + 'px; width:' + this.width + 'px;position:absolute;display:block;'
+				this.setStyle(style)
 		   }
 			
 		};

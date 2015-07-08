@@ -13,10 +13,11 @@ module.exports = kind({
 	height: 0,
 	create: kind.inherit(function (sup) {
 		return function () {
-			sup.apply(this, arguments);
 			
 			//create a new pixmap
 			this.pixmap = new this.window.app.qt.QPixmap(this.width, this.height);
+			
+			sup.apply(this, arguments);
 			
 			//if there is a fill object attached, then use it to get the fill
 			if(this.$.fill) {
@@ -33,8 +34,14 @@ module.exports = kind({
 		return function (props) {
 			//pass qt down to children, seems to be a continuing theme
 			//might just want to create a base kind
-			props.qt = this.window.app.qt;
 			sup.apply(this, arguments);
+			props.qt = this.window.app.qt;
+			props.pixmap = this;
 		};
-	})
+	}),
+	paintMouseEvent: function(event) {
+		if(this.$.fill && this.$.fill.paintMouseEvent) {
+			this.$.fill.paintMouseEvent(event);	
+		}
+	}
 });

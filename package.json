@@ -13,5 +13,8 @@
   },
   "assets": [
     "resources"
+  ],
+  "styles": [
+    "style/*.css"
   ]
 }
