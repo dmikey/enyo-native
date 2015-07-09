@@ -1,10 +1,10 @@
-Enyo Native Hybrid Applications
+** Enyo Native Hybrid Applications
 -------------------------------
 
 Early testing, of Enyo 2.6 modular running under NodeJS and driving Qt interfaces.
 
 
-Requirements
+** Requirements
 ------------
 
 Due to the experimental nature of this, the requirements below are pretty strict.
@@ -31,9 +31,10 @@ The built file will work in Chrome (latest used for development), for native sup
 ** How to build my code
 -----------------------
 
-* Node v0.10.39
-* Enyo-Dev at commit (https://github.com/enyojs/enyo-dev/commit/3437da02a3dfb133ef89af5a4f987d6212f0f43d)
-* Clone this code
+* Node v0.10.39, Python, Make, and GCC.
+* enyo-dev at commit (https://github.com/enyojs/enyo-dev/commit/3437da02a3dfb133ef89af5a4f987d6212f0f43d)
+* enyo js at branch (enyo.git#derek-nodejs-test) commit. 9e8a183
+* clone this code enyo-native.git#hybrid (or the gerrit branch)
 * npm install
 * epack
 
@@ -42,14 +43,11 @@ The built file will work in Chrome (latest used for development), for native sup
 ------------------------------
 
 * run output.js in browser with index.html in dist dir
-* run node output.js from the dist dir to see native output used
+* run node dist/output.js from the root proj dir to see native output used
 
 
 ** Any links or URLs for reference
 ---------------------------------
 
 * https://github.com/dmikey/enyo-native/tree/hybrid/
-
-
-
-
+* https://github.com/arturadib/node-qt
