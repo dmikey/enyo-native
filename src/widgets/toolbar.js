@@ -2,6 +2,7 @@ var
 	kind = require('enyo/kind');
 
 var
+  	Image = require('../smartui/image'),
 	Pixmap = require('../smartui/pixmap'),
 	Widget = require('../smartui/widget'),
     Pixmap = require('../smartui/pixmap'),
@@ -143,6 +144,7 @@ var
 
 module.exports = kind({
 	kind: Widget,
+	style: 'overflow:hidden;',
 	components: [
 		{kind: background},
 		{kind: black},
@@ -151,7 +153,19 @@ module.exports = kind({
 		{kind: green},
 		{kind: fucia},
 		{kind: yellow},
-		{kind: purple}
+		{kind: purple},
+		{
+			kind: Image,
+			left: 520,
+			top: 0,
+			src: 'resources/beanbirdfamilysm.png'
+    	},
+		{
+			kind: Image,
+			left: 362,
+			top: 6,
+			src: 'resources/beanpaint.png'
+    	}
 	],
 	getColorByX: function(x) {
 		
@@ -168,7 +182,12 @@ module.exports = kind({
 		];
 		
 		var colorIndex = Math.floor(x/50);
+		var color = colors[colorIndex];
 		
-		return colors[colorIndex];
+		if(color) {
+			return color;
+		} else {
+			return colors[0];
+		}
 	}
 });

@@ -1,9 +1,11 @@
+
 var
     enyo = require('enyo'),
     kind = require('enyo/kind'),
     platform = require('enyo/platform');
 
 var
+    Image = require('../smartui/image'),
     Pixmap = require('../smartui/pixmap'),
     PainterFill = require('../smartui/painterfill'),
     Widget = require('../smartui/widget'),

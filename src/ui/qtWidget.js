@@ -1,3 +1,13 @@
+/*
+
+	qtPixmap provides drawPixmap to the `owner` widget.
+	
+	currently supports : left, top, width, height, and component ownership, 
+	
+	todo: widgets fail when ownership is 3 deep
+
+*/
+
 var
     kind = require('enyo/kind');
 
@@ -30,12 +40,17 @@ module.exports = kind({
 
             //set up events if we need them
             this.widget.mousePressEvent(function(e) {
+				
+				//send these for now, tap needs to be sorted with up and down
+				//but HACKATHON!
                 this.dispatchEvent('onmousedown', e, this);
                 this.dispatchEvent('ontap', e, this);
+				
                 this.widget.update();
             }.bind(this));
 
             this.widget.mouseMoveEvent(function(e) {
+				//send this to enyo
                 this.dispatchEvent('onmousemove', e, this);
                 this.widget.update();
             }.bind(this));
@@ -43,6 +58,8 @@ module.exports = kind({
             //setup the widget paint event
             this.widget.paintEvent(this.paintEvent.bind(this));
 
+			//show this widget by default
+			//todo: add a hide and stuff
             this.widget.show();
         };
     }),
@@ -55,6 +72,8 @@ module.exports = kind({
         p.begin(this.widget);
 
         //iterate over the paint queue from child components
+		//this fails if this is owns another widget >:-| child widget
+		//can not paint during the same cycle I guess? 
         for (var i = 0; i < this.get('queue').length; i++) {
             this.get('queue')[i](p);
         }

@@ -1,3 +1,10 @@
+/*
+
+	qtWindow kind is really just widget. infact it was created before the generic
+	need for a widget, and thus should be rewritten to use qtWidget owned by the app
+	
+*/
+
 var
     kind = require('enyo/kind');
 

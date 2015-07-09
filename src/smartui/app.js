@@ -3,27 +3,16 @@
 	uses platform to determine which 'rasterizer' it should use when creating components.
 	each smart component then determines how to represent itself in environment
 */
+
 var
     kind = require('enyo/kind'),
-    platform = require('enyo/platform'),
-    utils = require('enyo/utils');
+    platform = require('enyo/platform');
 
 var
     app;
 
 var
-    def = {
-        constructor: kind.inherit(function(sup) {
-            return function() {
-                sup.apply(this, arguments);
-            };
-        }),
-        constructed: kind.inherit(function(sup) {
-            return function() {
-                sup.apply(this, arguments);
-            };
-        })
-    };
+    def = {};
 
 if (platform.platformName == 'node') {
     //we will use a qt application

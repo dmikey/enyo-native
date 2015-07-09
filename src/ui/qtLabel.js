@@ -1,3 +1,11 @@
+/*
+
+	qtLabel provides a drawText routine to the `owner` widget
+	
+	currently supports : left, top, content
+
+*/
+
 var
     kind = require('enyo/kind');
 
@@ -14,6 +22,9 @@ module.exports = kind({
         return function() {
             sup.apply(this, arguments);
 
+			//draw the text to the owner widget
+			//todo: window -> widget
+			//todo: add font support
             this.window.queue.push(function(p) {
                 p.drawText(this.left, this.top, this.content);
             }.bind(this))

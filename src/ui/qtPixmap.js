@@ -1,3 +1,15 @@
+/*
+
+	qtPixmap provides drawPixmap to the `owner` widget.
+	
+	currently supports : left, top, width, height, owns a fill
+	
+	usage (where kind is type colorfill.js or painterfill.js):
+	
+		components: [{name:'fill', kind: }]
+		
+*/
+
 var
     kind = require('enyo/kind');
 

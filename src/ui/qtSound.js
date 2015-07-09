@@ -1,3 +1,17 @@
+/*
+
+	qtSound provides a sound implimentation
+	
+	currently supports : autoplay [true|false], loop count(loops), src, play
+	
+	usage (where kind is type colorfill.js or painterfill.js):
+	
+		components: [{name:'fill', kind: }]
+	
+	todo: widgets fail when ownership is 3 deep
+
+*/
+
 var
     kind = require('enyo/kind');
 
@@ -9,7 +23,7 @@ module.exports = kind({
     kind: Component,
     src: '',
     loops: 1,
-    autoPlay: false,
+    autoplay: false,
     create: kind.inherit(function(sup) {
         return function() {
             sup.apply(this, arguments);

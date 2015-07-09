@@ -1,3 +1,11 @@
+/*
+
+	qtApp kind, this starts a qt PID that this app can interface with through the v8 bridge.
+	this app will own other components. Currently supported with this POC is really a widget 
+	for UI. 
+	
+*/
+
 var
     kind = require('enyo/kind'),
     utils = require('enyo/utils');
@@ -13,11 +21,13 @@ var qt = 'node-qt';
 //application kind for qt apps
 module.exports = kind({
     kind: Component,
-    constructor: function() {
-        this.inherited(arguments);
-        this.qt = require(qt);
-        this.app = new this.qt.QApplication();
-    },
+    constructor: kind.inherit(function(sup) {
+        return function() {
+	 		this.qt = require(qt);
+        	this.app = new this.qt.QApplication();
+		sup.apply(this, arguments);
+        };
+    }),
     constructed: function() {
         this.inherited(arguments);
         setInterval(function() {
